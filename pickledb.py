@@ -8,12 +8,10 @@ sample = requests.get(URL)
 soup = BeautifulSoup(sample.text,"html.parser")
 
 def scrap_the_pickledata():
-    m_div = soup.find('div',class_ = "_1LZ3")
-    div_row = m_div.find('div',class_ = '_3RA-')
-    all_div = div_row.find_all('div',class_ = '_1fje')
+    div_tag = soup.find('div',class_ = "_1LZ3")
+    div_tag1 = div_tag.find('div',class_ = '_3RA-')
+    all_div = div_tag1.find_all('div',class_ = '_1fje')
     
-    pickle_name = []
-    price_of_pickle = []
     for dv in all_div:
         mDiv = dv.find_all('div',class_ = '_2i1r')
         for name in mDiv:
@@ -37,7 +35,12 @@ def scrap_the_pickledata():
             price_of_pickle.append(all_price)
 
 
-    return [pickle_name,price_of_pickle,]
+            picklesData = {}
+
+            
+
+
         
         
 alldata =scrap_the_pickledata()
+print(alldata)
